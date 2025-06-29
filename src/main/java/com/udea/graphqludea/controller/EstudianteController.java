@@ -2,20 +2,16 @@ package com.udea.graphqludea.controller;
 
 import com.udea.graphqludea.entity.Curso;
 import com.udea.graphqludea.entity.Estudiante;
-import com.udea.graphqludea.service.EstudianteDetailsService;
 import com.udea.graphqludea.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class EstudianteController {
@@ -23,18 +19,15 @@ public class EstudianteController {
     private final EstudianteService estudianteService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
-    private final EstudianteDetailsService userDetailsService;
 
 
     @Autowired
     public EstudianteController(EstudianteService estudianteService,
                                 PasswordEncoder passwordEncoder,
-                                AuthenticationManager authenticationManager,
-                                EstudianteDetailsService userDetailsService) {
+                                AuthenticationManager authenticationManager) {
         this.estudianteService = estudianteService;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
-        this.userDetailsService = userDetailsService;
     }
 
     @QueryMapping

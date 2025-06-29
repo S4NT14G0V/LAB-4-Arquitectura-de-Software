@@ -1,6 +1,5 @@
 package com.udea.graphqludea.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
