@@ -1,9 +1,9 @@
 package com.udea.graphqludea.controller;
 
-import com.example.InnoSistemas.entity.Curso;
-import com.example.InnoSistemas.entity.Estudiante;
-import com.example.InnoSistemas.service.EstudianteDetailsService;
-import com.example.InnoSistemas.service.EstudianteService;
+import com.udea.graphqludea.entity.Curso;
+import com.udea.graphqludea.entity.Estudiante;
+import com.udea.graphqludea.service.EstudianteDetailsService;
+import com.udea.graphqludea.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -37,19 +37,16 @@ public class EstudianteController {
         this.userDetailsService = userDetailsService;
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Estudiante> estudiantes() {
         return estudianteService.findAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Estudiante estudiante(@Argument int id) {
         return estudianteService.findById(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Curso> cursosPorEstudiante(@Argument int estudianteId) {
         return estudianteService.getCursosByEstudianteId(estudianteId);
@@ -70,7 +67,6 @@ public class EstudianteController {
     }
 
 
-    @PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Estudiante actualizarEstudiante(@Argument Estudiante input) {
         Estudiante estudiante = estudianteService.findById(input.getId());

@@ -1,10 +1,10 @@
 package com.udea.graphqludea.controller;
 
-import com.example.InnoSistemas.entity.Estudiante;
-import com.example.InnoSistemas.entity.Integracion;
-import com.example.InnoSistemas.service.EstudianteService;
-import com.example.InnoSistemas.service.IntegracionService;
-import com.example.InnoSistemas.service.NotificacionService;
+import com.udea.graphqludea.entity.Estudiante;
+import com.udea.graphqludea.entity.Integracion;
+import com.udea.graphqludea.service.EstudianteService;
+import com.udea.graphqludea.service.IntegracionService;
+import com.udea.graphqludea.service.NotificacionService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -31,31 +31,26 @@ public class IntegracionController {
         this.estudianteService = estudianteService;
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Integracion> integraciones() {
         return integracionService.findAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Integracion integracion(@Argument int id) {
         return integracionService.findById(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Integracion> integracionesPorEstudiante(@Argument int estudianteId) {
         return integracionService.findByEstudianteId(estudianteId);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Integracion> integracionesPorEquipo(@Argument int equipoId) {
         return integracionService.findByEquipoId(equipoId);
     }
 
-    @PreAuthorize("permitAll()")
     @MutationMapping
     public Integracion crearIntegracion(@Argument int estudianteId, @Argument int equipoId, @Argument int rolId) {
         Integracion integracion = integracionService.save(estudianteId, equipoId, rolId);

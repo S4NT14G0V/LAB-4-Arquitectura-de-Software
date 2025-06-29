@@ -1,0 +1,11 @@
+type Equipo {
+    id: ID!
+    nombre: String
+    fecha_creacion: String
+    curso: Curso
+    integracionList: [Integracion]
+}
+
+input EquipoInput {
+    nombre: String
+}

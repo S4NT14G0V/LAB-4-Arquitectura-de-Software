@@ -5,7 +5,7 @@ services:
     container_name: mysql_container
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: graphudea
+      MYSQL_DATABASE: InnoSistemas
     ports:
       - "3306:3306"
     volumes:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/graphudea
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/InnoSistemas
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
 

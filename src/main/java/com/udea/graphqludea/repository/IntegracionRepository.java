@@ -1,8 +1,8 @@
 package com.udea.graphqludea.repository;
 
-import com.example.InnoSistemas.entity.Equipo;
-import com.example.InnoSistemas.entity.Estudiante;
-import com.example.InnoSistemas.entity.Integracion;
+import com.udea.graphqludea.entity.Equipo;
+import com.udea.graphqludea.entity.Integracion;
+import com.udea.graphqludea.entity.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.udea.graphqludea.service;
 
-import com.example.InnoSistemas.entity.PlantillaNotificacion;
-import com.example.InnoSistemas.repository.PlantillaNotificacionRepository;
+import com.udea.graphqludea.entity.PlantillaNotificacion;
+import com.udea.graphqludea.repository.PlantillaNotificacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

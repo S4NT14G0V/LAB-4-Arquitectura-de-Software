@@ -1,9 +1,9 @@
 package com.udea.graphqludea.service;
 
-import com.example.InnoSistemas.entity.Curso;
-import com.example.InnoSistemas.entity.Estudiante;
-import com.example.InnoSistemas.repository.EstudianteRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.udea.graphqludea.entity.Curso;
+import com.udea.graphqludea.entity.Estudiante;
+import com.udea.graphqludea.repository.EstudianteRepository;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

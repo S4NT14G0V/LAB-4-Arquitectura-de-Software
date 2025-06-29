@@ -1,6 +1,6 @@
 package com.udea.graphqludea.repository;
 
-import com.example.InnoSistemas.entity.PlantillaNotificacion;
+import com.udea.graphqludea.entity.PlantillaNotificacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

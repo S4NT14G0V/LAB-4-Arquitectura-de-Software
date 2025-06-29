@@ -1,7 +1,7 @@
 package com.udea.graphqludea.controller;
 
-import com.example.InnoSistemas.entity.Equipo;
-import com.example.InnoSistemas.service.EquipoService;
+import com.udea.graphqludea.entity.Equipo;
+import com.udea.graphqludea.service.EquipoService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -19,25 +19,21 @@ public class EquipoController {
         this.equipoService = equipoService;
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Equipo> equipos() {
         return equipoService.findAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public Equipo equipo(@Argument int id) {
         return equipoService.findById(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @QueryMapping
     public List<Equipo> equiposPorCurso(@Argument int cursoId) {
         return equipoService.findByCursoId(cursoId);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Equipo crearEquipo(@Argument Equipo equipoInput, @Argument int cursoId) {
         Equipo equipo = new Equipo();
@@ -45,7 +41,6 @@ public class EquipoController {
         return equipoService.save(equipo, cursoId);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Equipo actualizarEquipo(@Argument int id, @Argument Equipo equipoInput) {
         Equipo equipo = new Equipo();
@@ -53,7 +48,6 @@ public class EquipoController {
         return equipoService.update(id, equipo);
     }
 
-    @PreAuthorize("isAuthenticated()")
     @MutationMapping
     public Boolean eliminarEquipo(@Argument int id) {
         equipoService.deleteById(id);

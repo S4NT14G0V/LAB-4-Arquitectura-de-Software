@@ -1,6 +1,6 @@
 package com.udea.graphqludea.repository;
 
-import com.example.InnoSistemas.entity.Estudiante;
+import com.udea.graphqludea.entity.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

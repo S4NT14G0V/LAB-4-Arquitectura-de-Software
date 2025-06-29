@@ -1,7 +1,7 @@
 package com.udea.graphqludea.service;
 
-import com.example.InnoSistemas.entity.Estudiante;
-import com.example.InnoSistemas.repository.EstudianteRepository;
+import com.udea.graphqludea.entity.Estudiante;
+import com.udea.graphqludea.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,10 +1,10 @@
 package com.udea.graphqludea.service;
 
-import com.example.InnoSistemas.entity.Dashboard;
-import com.example.InnoSistemas.entity.Equipo;
-import com.example.InnoSistemas.repository.DashboardRepository;
-import com.example.InnoSistemas.repository.EquipoRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.udea.graphqludea.entity.Dashboard;
+import com.udea.graphqludea.entity.Equipo;
+import com.udea.graphqludea.repository.DashboardRepository;
+import com.udea.graphqludea.repository.EquipoRepository;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

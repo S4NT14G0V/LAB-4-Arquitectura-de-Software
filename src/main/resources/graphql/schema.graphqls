@@ -1,30 +1,74 @@
-type Flight {
-    id: ID!
-    flightNumber: String!
-    origin: String!
-    destination: String!
-    seatsAvailable: Int!
-    departureTime: String!
-    arrivalTime: String!
-    reservations: [Reservation!]!
-}
-
-type Reservation {
-    id: ID!
-    passengerName: String!
-    seatNumber: String!
-    reservationCode: String!
-    flight: Flight!
-}
-
 type Query {
-    allFlights: [Flight]
-    flightById(id: ID!): Flight
+    #curso
+    cursos: [Curso]
+    curso(id: ID!): Curso!
+    estudiantesPorCurso(id: ID!): [Estudiante]
+
+    #dashboard
+    dashboards: [Dashboard]
+    dashboard(id: ID!): Dashboard
+    dashboardsPorEquipo(equipoId: ID!): [Dashboard]
+
+    #equipo
+    equipos: [Equipo]
+    equipo(id: ID!): Equipo
+    equiposPorCurso(cursoId: ID!): [Equipo]
+
+    #estudiante
+    estudiantes: [Estudiante]
+    estudiante(id: ID!): Estudiante
+    cursosPorEstudiante(estudianteId: ID!): [Curso]
+
+    #integracion
+    integraciones: [Integracion]
+    integracion(id: ID!): Integracion
+    integracionesPorEstudiante(estudianteId: ID!): [Integracion]
+    integracionesPorEquipo(equipoId: ID!): [Integracion]
+
+    #notificacion
+    notificaciones: [Notificacion]
+    notificacion(id: ID!): Notificacion
+    notificacionesPorEstudiante(estudianteId: ID!): [Notificacion]
+    notificacionesPorEquipo(equipoId: ID!): [Notificacion]
 }
 
 type Mutation {
-    reserveFlight(flightId: ID!, passengerName: String!, seatNumber: String!): Reservation
-    addFlight(flightNumber: String!, seatsAvailable: Int!,origin: String!, destination: String!,
-        departureTime: String!, arrivalTime: String!): Flight
+    #curso
+    crearCurso(curso: CursoInput): Curso
+    actualizarCurso(input: CursoInput, id: ID!): Curso
+    eliminarCurso(id: ID!): Boolean
+    agregarEstudianteACurso(cursoId: ID!, estudianteId: ID!): Boolean
+    eliminarEstudianteDeCurso(cursoId: ID!, estudianteId: ID!): Boolean
+
+    #dashboard
+    crearDashboard(dashboardInput: DashboardInput!, equipoId: ID!): Dashboard
+    actualizarDashboard(id: ID!, dashboardInput: DashboardInput!): Dashboard
+    eliminarDashboard(id: ID!): Boolean
+
+    #equipo
+    crearEquipo(equipoInput: EquipoInput!, cursoId: ID!): Equipo
+    actualizarEquipo(id: ID!, equipoInput: EquipoInput!): Equipo
+    eliminarEquipo(id: ID!): Boolean
+
+    #estudiante
+    crearEstudiante(estudiante: EstudianteInput!): Estudiante
+    actualizarEstudiante(input: EstudianteInput!, id: ID!): Estudiante
+
+    #integracion
+    crearIntegracion(estudianteId: ID!, equipoId: ID!, rolId: ID!): Integracion
+    eliminarIntegracion(id: ID!, razon: String!): Boolean
+
+    #notificacion
+    crearNotificacion(
+        tipo: String!
+        estudianteId: ID!
+        equipoId: ID!
+    ): Notificacion
+    marcarNotificacionComoLeida(id: ID!): Notificacion
+    eliminarNotificacion(id: ID!): Boolean
 }
 
+input VariableInput {
+    key: String!
+    value: String!
+}
