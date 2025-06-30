@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -17,17 +15,11 @@ import java.util.List;
 public class EstudianteController {
 
     private final EstudianteService estudianteService;
-    private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
 
 
     @Autowired
-    public EstudianteController(EstudianteService estudianteService,
-                                PasswordEncoder passwordEncoder,
-                                AuthenticationManager authenticationManager) {
+    public EstudianteController(EstudianteService estudianteService) {
         this.estudianteService = estudianteService;
-        this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
     }
 
     @QueryMapping
@@ -51,28 +43,8 @@ public class EstudianteController {
         estudiante.setNombre(input.getNombre());
         estudiante.setApellidos(input.getApellidos());
         estudiante.setEmail(input.getEmail());
-
-        // Encriptar la contraseña
-        String hashedPassword = passwordEncoder.encode(input.getPassword());
-        estudiante.setPassword(hashedPassword);
-
+        estudiante.setPassword(input.getPassword()); // Sin encriptación
         return estudianteService.save(estudiante);
-    }
-
-
-    @MutationMapping
-    public Estudiante actualizarEstudiante(@Argument Estudiante input) {
-        Estudiante estudiante = estudianteService.findById(input.getId());
-        estudiante.setNombre(input.getNombre());
-        estudiante.setEmail(input.getEmail());
-        estudiante.setApellidos(input.getApellidos());
-
-        if (input.getPassword() != null && !input.getPassword().isEmpty()) {
-            String hashedPassword = passwordEncoder.encode(input.getPassword());
-            estudiante.setPassword(hashedPassword);
-        }
-
-        return estudianteService.update(estudiante);
     }
 
 
