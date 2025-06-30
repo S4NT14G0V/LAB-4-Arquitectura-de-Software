@@ -1,0 +1,27 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    createdAt: String!
+    roleEntity: Role!
+}
+
+type Role {
+    id: ID!
+    name: String!
+    description: String
+}
+
+input UserInput {
+    name: String!
+    email: String!
+    roleEntity: RoleInput!
+}
+
+input UserInputAux {
+    id: ID!
+}
+
+input RoleInput{
+    id: ID!
+}
