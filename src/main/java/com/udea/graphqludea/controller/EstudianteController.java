@@ -47,30 +47,4 @@ public class EstudianteController {
         return estudianteService.save(estudiante);
     }
 
-
-//    @MutationMapping
-//    public AuthResponse login(@Argument AuthRequest input) {
-//        try {
-//            // Verificar si el usuario existe primero
-//            Optional<Estudiante> estudiante = estudianteService.findByEmail(input.getEmail());
-//            if (estudiante.isEmpty()) {
-//                return new AuthResponse("Usuario no encontrado", false);
-//            }
-//
-//            // Autenticación
-//            authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(input.getEmail(), input.getPassword())
-//            );
-//
-//            // Generación del token JWT
-//            final UserDetails userDetails = userDetailsService.loadUserByUsername(input.getEmail());
-//            final String jwt = jwtUtil.generateToken(userDetails.getUsername());
-//
-//            return new AuthResponse(jwt);
-//        } catch (BadCredentialsException e) {
-//            return new AuthResponse("Contraseña incorrecta", false);
-//        } catch (Exception e) {
-//            return new AuthResponse("Error durante el login: " + e.getMessage(), false);
-//        }
-//    }
 }
